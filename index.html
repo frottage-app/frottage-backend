@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <script>
+      async function boring() {
+        let response = await fetch("/frottage", {
+          method: "POST",
+          body: "test"
+        })
+        console.log(response)
+        let text = await response.text()
+        console.log(text)
+      }
+    </script>
+</head>
+<body>
+    <h1>Lets frottage! :)</h1>
+    <button onClick="boring()">frottage now!</button>
+</body>
+</html>

@@ -1,8 +1,161 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "entr@latest": {
+      "last_modified": "2025-04-07T13:23:10Z",
+      "resolved": "github:NixOS/nixpkgs/b0b4b5f8f621bfe213b8b21694bab52ecfcbf30b#entr",
+      "source": "devbox-search",
+      "version": "5.7",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/10dr6x4lp5mv2nbiyf384bh14fwbyi4s-entr-5.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/10dr6x4lp5mv2nbiyf384bh14fwbyi4s-entr-5.7"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qsyp50145zbyaqq3qvlwpi8bq3x8ch7y-entr-5.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qsyp50145zbyaqq3qvlwpi8bq3x8ch7y-entr-5.7"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dv069xdm62p2ccw0k5nsbryjffbxxkbv-entr-5.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dv069xdm62p2ccw0k5nsbryjffbxxkbv-entr-5.7"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/15z6jc88s37q1na1jx80gy9zw8p8j8hs-entr-5.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/15z6jc88s37q1na1jx80gy9zw8p8j8hs-entr-5.7"
+        }
+      }
+    },
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
       "resolved": "github:NixOS/nixpkgs/ebe4301cbd8f81c4f8d3244b3632338bbeb6d49c?lastModified=1744868846&narHash=sha256-5RJTdUHDmj12Qsv7XOhuospjAjATNiTMElplWnJE9Hs%3D"
+    },
+    "nodePackages.browser-sync@2.29.3": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#nodePackages.browser-sync",
+      "source": "devbox-search",
+      "version": "2.29.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/08gb191njg7m38qz5akvqd6hdcbk75ip-browser-sync-2.29.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/08gb191njg7m38qz5akvqd6hdcbk75ip-browser-sync-2.29.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/l4hs6290cxnvbv7mm5rkh1m1sfp2f512-browser-sync-2.29.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/l4hs6290cxnvbv7mm5rkh1m1sfp2f512-browser-sync-2.29.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/yih0p2i4dfwlyzr24zap2p8zwy9g52i7-browser-sync-2.29.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/yih0p2i4dfwlyzr24zap2p8zwy9g52i7-browser-sync-2.29.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4jp5mpa2br21ckvrcfcm0dfaq9fdq66b-browser-sync-2.29.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/4jp5mpa2br21ckvrcfcm0dfaq9fdq66b-browser-sync-2.29.3"
+        }
+      }
+    },
+    "python@latest": {
+      "last_modified": "2025-03-23T05:31:05Z",
+      "plugin_version": "0.0.4",
+      "resolved": "github:NixOS/nixpkgs/dd613136ee91f67e5dba3f3f41ac99ae89c5406b#python313",
+      "source": "devbox-search",
+      "version": "3.13.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/f55hdkj3px5v288jv6yai2gh5xrlj848-python3-3.13.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/f55hdkj3px5v288jv6yai2gh5xrlj848-python3-3.13.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/bs017cd4y2gzqc1sz3gw6v7hjwpyq3l6-python3-3.13.2",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/xs7r19skm9hlli72q7q1wck5da957bqc-python3-3.13.2-debug"
+            }
+          ],
+          "store_path": "/nix/store/bs017cd4y2gzqc1sz3gw6v7hjwpyq3l6-python3-3.13.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wjxlppca1s14xzw5iz608qpywyl5mcdw-python3-3.13.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wjxlppca1s14xzw5iz608qpywyl5mcdw-python3-3.13.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/njpnqszjaj6k38cp4466ygn74n392xy1-python3-3.13.2",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/ixcc4jnj3byz0hg943wadfy1phxkmmgg-python3-3.13.2-debug"
+            }
+          ],
+          "store_path": "/nix/store/njpnqszjaj6k38cp4466ygn74n392xy1-python3-3.13.2"
+        }
+      }
     },
     "rustup@latest": {
       "last_modified": "2025-03-11T17:52:14Z",
@@ -50,6 +203,130 @@
             }
           ],
           "store_path": "/nix/store/dl3rjwl31d31qkga5i7nnygvbcyxpfn3-rustup-1.27.1"
+        }
+      }
+    },
+    "sqlite-interactive@latest": {
+      "last_modified": "2025-04-13T09:22:33Z",
+      "resolved": "github:NixOS/nixpkgs/18dd725c29603f582cf1900e0d25f9f1063dbf11#sqlite-interactive",
+      "source": "devbox-search",
+      "version": "3.48.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/2i9ja2k1y6vx1996qszv2a3pay0p954k-sqlite-interactive-3.48.0-bin",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/j7i9f46li2459rfljca6sr0b7cwzr45h-sqlite-interactive-3.48.0-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/6xv2midkdkl15ywjv3gv6d73zmx8sylp-sqlite-interactive-3.48.0-dev"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/d4gnqjgvzqb90g2fv1b88i0dlms5j4c5-sqlite-interactive-3.48.0-doc"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/04r3ca5bszrgy1xz119480ffhy9c0ybn-sqlite-interactive-3.48.0"
+            }
+          ],
+          "store_path": "/nix/store/2i9ja2k1y6vx1996qszv2a3pay0p954k-sqlite-interactive-3.48.0-bin"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/d5p708369bcy019z425imc8mkcnw2w2w-sqlite-interactive-3.48.0-bin",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/zznbi1difjkisgr4kvn1z681nsdg60q8-sqlite-interactive-3.48.0-man",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/39gv2xpspb2bjqb4z9q0ib7d4knj0q3p-sqlite-interactive-3.48.0-debug"
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/cvgc0snnq11jgzqd6vjdaiqlfhnjwvm2-sqlite-interactive-3.48.0-dev"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/fbwn0i1wwk65vxi448jawasd931sf8dn-sqlite-interactive-3.48.0-doc"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/6xb07j1x8dzhw707ag4r749pm1icf9s4-sqlite-interactive-3.48.0"
+            }
+          ],
+          "store_path": "/nix/store/d5p708369bcy019z425imc8mkcnw2w2w-sqlite-interactive-3.48.0-bin"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/ag0z9jmq6g2k9ayzz7f1nqkz5ym14qvw-sqlite-interactive-3.48.0-bin",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/lzj1gcxz0r2fkv35yl736bl4rjpnx8yj-sqlite-interactive-3.48.0-man",
+              "default": true
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/pinhxd71vb5hkvjv3k6p5ajsvb6g7mf6-sqlite-interactive-3.48.0"
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/a8wp80yyz761ciw2gz4mv5855i42prgc-sqlite-interactive-3.48.0-dev"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/j8mgmn842b5cwfhf6zm3hnmlq8n1cwww-sqlite-interactive-3.48.0-doc"
+            }
+          ],
+          "store_path": "/nix/store/ag0z9jmq6g2k9ayzz7f1nqkz5ym14qvw-sqlite-interactive-3.48.0-bin"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "bin",
+              "path": "/nix/store/z0ywjzrnj70lhl1jf6nafrbnqg67p916-sqlite-interactive-3.48.0-bin",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/jg009i8nlkgfm0ihq5gnk1jndh6jlpi5-sqlite-interactive-3.48.0-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/2p017vhpwdrim4xh4ddqqvb3af16k907-sqlite-interactive-3.48.0-dev"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/dmk5myaqr29m367r4i43rikca4361j8g-sqlite-interactive-3.48.0-doc"
+            },
+            {
+              "name": "out",
+              "path": "/nix/store/vpd28smr2rkricjybjff3j07s3jdk8zl-sqlite-interactive-3.48.0"
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/saln3z3lv94a7285hjfb3zviipcbc5bl-sqlite-interactive-3.48.0-debug"
+            }
+          ],
+          "store_path": "/nix/store/z0ywjzrnj70lhl1jf6nafrbnqg67p916-sqlite-interactive-3.48.0-bin"
         }
       }
     }

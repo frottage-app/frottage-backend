@@ -1,7 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
   "packages": [
-    "rustup@latest"
+    "rustup@latest",
+    "entr@latest",
+    "nodePackages.browser-sync@2.29.3",
+    "sqlite-interactive@latest",
+    "python@latest",
   ],
   "shell": {
     "init_hook": [
@@ -11,7 +15,7 @@
       "export RUSTUP_HOME=$rustupHomeDir",
       "export RUST_BACKTRACE=1",
     ],
-  }
+  },
 }
 // this file supports comments
 // vim: set ft=jsonc:
