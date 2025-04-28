@@ -46,7 +46,7 @@ async fn random_prompt() -> Json<Vec<Prompt>> {
     let conn = Connection::open("database.db").unwrap();
 
     let mut stmt_targets = conn
-        .prepare("select name, aspectRatio from targets")
+        .prepare("select target_name, aspect_ratio from target")
         .unwrap();
 
     let targets: Vec<DbTarget> = stmt_targets
@@ -60,7 +60,7 @@ async fn random_prompt() -> Json<Vec<Prompt>> {
         .map(|res| res.unwrap())
         .collect();
 
-    let mut stmt_random_prompt = conn.prepare("select prompts.id, prompts.prompt from promptTargets, prompts where prompts.id=promptTargets.promptId and promptTargets.targetName=?1 order by random() limit 1").unwrap();
+    let mut stmt_random_prompt = conn.prepare("select prompt.prompt_id, prompt.prompt from prompt_target, prompt where prompt.prompt_id=prompt_target.prompt_id and prompt_target.target_name=?1 order by random() limit 1").unwrap();
 
     let prompts: Vec<Prompt> = targets
         .iter()
