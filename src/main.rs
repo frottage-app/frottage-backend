@@ -75,7 +75,10 @@ async fn random_prompt() -> Json<Vec<Prompt>> {
                 .unwrap();
             Prompt {
                 target: target.name.clone(),
-                prompt: db_prompt.prompt,
+                prompt: format!(
+                    "{} --aspect-ratio {} --profile najcud4 --version 7",
+                    db_prompt.prompt, target.aspectRatio
+                ),
             }
         })
         .collect();
