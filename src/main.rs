@@ -76,7 +76,7 @@ async fn random_prompt() -> Json<Vec<Prompt>> {
             Prompt {
                 target: target.name.clone(),
                 prompt: format!(
-                    "{} --aspect-ratio {} --profile najcud4 --version 7",
+                    "{} --aspect {} --profile najcud4 --version 7",
                     db_prompt.prompt, target.aspectRatio
                 ),
             }
