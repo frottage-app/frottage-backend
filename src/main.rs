@@ -1,4 +1,7 @@
-use axum::{Json, Router, routing::get};
+use axum::{
+    Json, Router,
+    routing::{get, post},
+};
 use rusqlite::Connection;
 use serde::Serialize;
 use std::net::SocketAddr;
@@ -11,7 +14,8 @@ async fn main() -> anyhow::Result<()> {
     // pass incoming GET requests on "/hello-world" to "hello_world" handler.
     let app = Router::new()
         .fallback_service(ServeFile::new("index.html"))
-        .route("/random_prompt", get(random_prompt));
+        .route("/random_prompt", get(random_prompt))
+        .route("/vote", post(vote_prompt));
 
     // write address like this to not make typos
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
@@ -23,9 +27,10 @@ async fn main() -> anyhow::Result<()> {
 }
 
 #[derive(Serialize)]
-struct Prompt {
+struct ApiPrompt {
     target: String,
     prompt: String,
+    promptId: i64,
 }
 
 #[derive(Debug)]
@@ -40,7 +45,7 @@ struct DbTarget {
     aspectRatio: String,
 }
 
-async fn random_prompt() -> Json<Vec<Prompt>> {
+async fn random_prompt() -> Json<Vec<ApiPrompt>> {
     println!("Lets frottage!");
 
     let conn = Connection::open("database.db").unwrap();
@@ -62,7 +67,7 @@ async fn random_prompt() -> Json<Vec<Prompt>> {
 
     let mut stmt_random_prompt = conn.prepare("select prompt.prompt_id, prompt.prompt from prompt_target, prompt where prompt.prompt_id=prompt_target.prompt_id and prompt_target.target_name=?1 order by random() limit 1").unwrap();
 
-    let prompts: Vec<Prompt> = targets
+    let prompts: Vec<ApiPrompt> = targets
         .iter()
         .map(|target| {
             let db_prompt: DbPrompt = stmt_random_prompt
@@ -73,14 +78,19 @@ async fn random_prompt() -> Json<Vec<Prompt>> {
                     })
                 })
                 .unwrap();
-            Prompt {
+            ApiPrompt {
                 target: target.name.clone(),
                 prompt: format!(
                     "{} --aspect {} --profile najcud4 --version 7",
                     db_prompt.prompt, target.aspectRatio
                 ),
+                promptId: db_prompt.id,
             }
         })
         .collect();
     Json(prompts)
+}
+
+async fn vote_prompt(body: String) {
+    println!("voting now...");
 }
