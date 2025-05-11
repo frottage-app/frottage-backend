@@ -15,7 +15,8 @@ async fn main() -> anyhow::Result<()> {
     let app = Router::new()
         .fallback_service(ServeFile::new("index.html"))
         .route("/random_prompt", get(random_prompt))
-        .route("/vote", post(vote_prompt));
+        .route("/vote", post(vote_prompt))
+        .route("/image", post(save_image));
 
     // write address like this to not make typos
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
@@ -27,10 +28,35 @@ async fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
+#[derive(Deserialize)]
+#[allow(non_snake_case)]
+struct ApiImageRequest {
+    promptId: i64,
+    targetName: String,
+    imageUrl: String,
+}
+
+async fn save_image(Json(image): Json<ApiImageRequest>) -> Result<(), String> {
+    println!(
+        "saving image for prompt {} on {} (url: {})",
+        image.promptId, image.targetName, image.imageUrl
+    );
+
+    let conn = Connection::open("database.db").map_err(|e| e.to_string())?;
+
+    conn.execute(
+        "INSERT INTO image (prompt_id, target_name, image_url) VALUES (?1, ?2, ?3)",
+        (&image.promptId, &image.targetName, &image.imageUrl),
+    )
+    .map_err(|e| e.to_string())?;
+
+    Ok(())
+}
+
 #[derive(Serialize)]
 #[allow(non_snake_case)]
 struct ApiPrompt {
-    target: String,
+    targetName: String,
     prompt: String,
     promptId: i64,
 }
@@ -82,7 +108,7 @@ async fn random_prompt() -> Json<Vec<ApiPrompt>> {
                 })
                 .unwrap();
             ApiPrompt {
-                target: target.name.clone(),
+                targetName: target.name.clone(),
                 prompt: format!(
                     "{} --aspect {} --profile najcud4 --version 7",
                     db_prompt.prompt, target.aspectRatio
