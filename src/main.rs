@@ -3,7 +3,7 @@ use axum::{
     routing::{get, post},
 };
 use rusqlite::Connection;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
 use tokio::net::TcpListener;
 use tower_http::services::ServeFile;
@@ -21,12 +21,14 @@ async fn main() -> anyhow::Result<()> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
     let listener = TcpListener::bind(addr).await?;
 
+    println!("listening on port {}", addr.port());
     axum::serve(listener, app.into_make_service()).await?;
 
     Ok(())
 }
 
 #[derive(Serialize)]
+#[allow(non_snake_case)]
 struct ApiPrompt {
     target: String,
     prompt: String,
@@ -40,6 +42,7 @@ struct DbPrompt {
 }
 
 #[derive(Debug)]
+#[allow(non_snake_case)]
 struct DbTarget {
     name: String,
     aspectRatio: String,
@@ -91,6 +94,31 @@ async fn random_prompt() -> Json<Vec<ApiPrompt>> {
     Json(prompts)
 }
 
-async fn vote_prompt(body: String) {
-    println!("voting now...");
+#[derive(Deserialize)]
+#[allow(non_snake_case)]
+struct ApiVoteRequest {
+    promptId: i64,
+    targetName: String,
+    stars: i32,
+}
+
+async fn vote_prompt(Json(vote): Json<ApiVoteRequest>) -> Result<(), String> {
+    println!(
+        "voting for prompt {} on {} ({} stars)",
+        vote.promptId, vote.targetName, vote.stars
+    );
+
+    if vote.stars < 1 || vote.stars > 5 {
+        return Err("Stars must be between 1 and 5".to_string());
+    }
+
+    let conn = Connection::open("database.db").map_err(|e| e.to_string())?;
+
+    conn.execute(
+        "INSERT INTO vote (prompt_id, target_name, stars) VALUES (?1, ?2, ?3)",
+        (&vote.promptId, &vote.targetName, &vote.stars),
+    )
+    .map_err(|e| e.to_string())?;
+
+    Ok(())
 }
