@@ -2,11 +2,16 @@ use axum::{
     Json, Router,
     routing::{get, post},
 };
+use rand::Rng;
 use rusqlite::Connection;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::net::SocketAddr;
+use tera::{Context, Tera, Value};
 use tokio::net::TcpListener;
 use tower_http::services::ServeFile;
+
+mod template;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -111,7 +116,8 @@ async fn random_prompt() -> Json<Vec<ApiPrompt>> {
                 targetName: target.name.clone(),
                 prompt: format!(
                     "{} --aspect {} --profile najcud4 --version 7",
-                    db_prompt.prompt, target.aspectRatio
+                    template::render_prompt(&db_prompt.prompt),
+                    target.aspectRatio
                 ),
                 promptId: db_prompt.id,
             }
