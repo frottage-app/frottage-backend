@@ -6,6 +6,7 @@
     "nodePackages.browser-sync@2.29.3",
     "sqlite-interactive@latest",
     "python@latest",
+    "just@latest",
   ],
   "shell": {
     "init_hook": [
