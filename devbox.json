@@ -7,6 +7,7 @@
     "sqlite-interactive@latest",
     "python@latest",
     "just@latest",
+    "flyctl@latest",
   ],
   "shell": {
     "init_hook": [

@@ -49,6 +49,34 @@
         }
       }
     },
+    "flyctl@latest": {
+      "last_modified": "2025-05-06T08:06:31Z",
+      "resolved": "github:NixOS/nixpkgs/1cb1c02a6b1b7cf67e3d7731cbbf327a53da9679#flyctl",
+      "source": "devbox-search",
+      "version": "0.3.110",
+      "systems": {
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/00ba82lv81mjcacdxa1yhlgns8falnmc-flyctl-0.3.110",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/00ba82lv81mjcacdxa1yhlgns8falnmc-flyctl-0.3.110"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/24nb2zkl1xbnsb4sgff2ahcssk2vv14j-flyctl-0.3.110",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/24nb2zkl1xbnsb4sgff2ahcssk2vv14j-flyctl-0.3.110"
+        }
+      }
+    },
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
       "resolved": "github:NixOS/nixpkgs/ebe4301cbd8f81c4f8d3244b3632338bbeb6d49c?lastModified=1744868846&narHash=sha256-5RJTdUHDmj12Qsv7XOhuospjAjATNiTMElplWnJE9Hs%3D"
     },

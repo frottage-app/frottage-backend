@@ -6,6 +6,7 @@ use rand::Rng;
 use rusqlite::Connection;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::env;
 use std::net::SocketAddr;
 use tera::{Context, Tera, Value};
 use tokio::net::TcpListener;
@@ -17,6 +18,7 @@ mod template;
 async fn main() -> anyhow::Result<()> {
     println!("server running or whatever");
     // pass incoming GET requests on "/hello-world" to "hello_world" handler.
+    let conn = connect_database();
     let app = Router::new()
         .fallback_service(ServeFile::new("index.html"))
         .route("/random_prompt", get(random_prompt))
@@ -47,7 +49,7 @@ async fn save_image(Json(image): Json<ApiImageRequest>) -> Result<(), String> {
         image.promptId, image.targetName, image.imageUrl
     );
 
-    let conn = Connection::open("database.db").map_err(|e| e.to_string())?;
+    let conn = connect_database();
 
     conn.execute(
         "INSERT INTO image (prompt_id, target_name, image_url) VALUES (?1, ?2, ?3)",
@@ -79,11 +81,15 @@ struct DbTarget {
     aspectRatio: String,
 }
 
+fn connect_database() -> Connection {
+    let database_path = env::var("DATABASE_PATH").expect("no ENV DATABASE_PATH");
+    Connection::open(database_path).unwrap()
+}
+
 async fn random_prompt() -> Json<Vec<ApiPrompt>> {
     println!("Lets frottage!");
 
-    let conn = Connection::open("database.db").unwrap();
-
+    let conn = connect_database();
     let mut stmt_targets = conn
         .prepare("select target_name, aspect_ratio from target")
         .unwrap();
@@ -144,7 +150,7 @@ async fn vote_prompt(Json(vote): Json<ApiVoteRequest>) -> Result<(), String> {
         return Err("Stars must be between 1 and 5".to_string());
     }
 
-    let conn = Connection::open("database.db").map_err(|e| e.to_string())?;
+    let conn = connect_database();
 
     conn.execute(
         "INSERT INTO vote (prompt_id, target_name, stars) VALUES (?1, ?2, ?3)",
