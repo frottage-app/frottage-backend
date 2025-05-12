@@ -24,7 +24,7 @@ async fn main() -> anyhow::Result<()> {
         .route("/image", post(save_image));
 
     // write address like this to not make typos
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     let listener = TcpListener::bind(addr).await?;
 
     println!("listening on port {}", addr.port());
