@@ -11,6 +11,7 @@ pub fn render_prompt(prompt_template: &str) -> String {
     tera.register_function("random_animal", random_animal);
     tera.register_function("random_vegetable", random_vegetable);
     tera.register_function("random_fruit", random_fruit);
+    tera.register_function("random_fruit_or_vegetable", random_fruit_or_vegetable);
 
     let context = Context::new(); // No need for variables in this simple example
 
